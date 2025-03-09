@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    /* @apply font-inter font-normal text-base text-body bg-whiten relative; */
+  }
+
+
+}
+
+
+@layer components {
+
+    .center{
+        @apply flex items-center justify-center;
+    }
+
+    aside ul.mainmenu>li>a{
+        @apply flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100
+    }
+    aside ul ul li a{
+        @apply  flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11  hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700
+    }
+
+    aside ul li a.active{
+        @apply bg-gray-100;
+    }
+
+    .radio-group>div>div{
+      @apply flex   items-center
+    }
+        .radio-group>div>div label {
+          @apply flex items-center
+        }
+
+ 
+    .check-group>div label{
+      @apply flex items-center
+    }
+
+    .check-group>div label span{
+      @apply block  text-sm font-medium text-gray-900 
+    }
+
+    .owl-nav{
+      /* #@apply flex justify-between absolute xl:top-[200px] top-[60px] w-full px-2 */
+      @apply absolute top-0 w-full
+    }
+
+
+    .owl-nav button>div{
+      @apply bg-gray-200 rounded-full h-10 w-10 flex items-center justify-center
+    }
+ 
+    .owl-nav button.owl-prev{
+      @apply xl:left-5 left-2 absolute top-20 xl:top-44
+    }
+
+    .owl-nav button.owl-next{
+      @apply xl:right-5 right-2  absolute top-20 xl:top-44
+    }
+
+    
+}
+
+@layer utilities {
+  
+  /* .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  } */
+
+
+  #fr-logo{
+    display: none !important;
+  }
+
+
+  
+}
+
