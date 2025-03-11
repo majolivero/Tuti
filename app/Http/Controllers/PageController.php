@@ -24,19 +24,17 @@ class PageController extends Controller
     }
 
     public function search(Request $request)
-    {
-        $q = $request->input('q');
-        $products = Product::active()->where(function ($query) use ($q) {
-            $query->orWhere('name', 'ILIKE', '%' . $q . '%')
-                ->orWhere('description', 'ILIKE', '%' . $q . '%')
-                ->orWhere('short_description', 'ILIKE', '%' . $q . '%');
-        })->paginate(24);
-        
-            
+{
+    $q = $request->input('q');
 
-        $context = compact('products');
-        return view('pages.search', $context);
-    }
+    $products = Product::active()->where(function ($query) use ($q) {
+        $query->orWhereRaw("unaccent(name) ILIKE unaccent(?)", ['%' . $q . '%'])
+            ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ['%' . $q . '%'])
+            ->orWhereRaw("unaccent(short_description) ILIKE unaccent(?)", ['%' . $q . '%']);
+    })->paginate(24);
+
+    return view('pages.search', compact('products'));
+}
 
     public function product($slug)
     {
